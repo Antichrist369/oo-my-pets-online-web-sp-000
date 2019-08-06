@@ -26,6 +26,7 @@ class Owner
   
   def initialize(name)
     @name = name
+    @species = 'human'
   end 
   
   def cats 
@@ -41,7 +42,7 @@ class Owner
   end
 
   def say_species 
-    "I am a human."
+    "I am a #{species}."
   end
   
   def buy_dog(name)
