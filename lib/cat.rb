@@ -2,23 +2,32 @@ class Cat
   
   attr_accessor :mood, :owner
   attr_reader :name
-  @@all = []
+  
+  class << self
+    @all = []
+    attr_reader :all
+    
+    def new(*args)
+      pet = super(*args)
+      @all << pet
+      pet
+    end
+  end
+  
   
   def initialize(name, owner)
     @name = name 
     @mood = "nervous"
     @@all << self
     @owner = owner
-    @owner.pets[:cats] << self
   end
-  
-  def self.all 
-    @@all
-  end 
   
   def sell
     @mood = 'nervous'
-    @owner.pets[:cats].delete(self)
     @owner = nil
+  end
+  
+  def feed 
+    @mood = 'happy'
   end
 end
