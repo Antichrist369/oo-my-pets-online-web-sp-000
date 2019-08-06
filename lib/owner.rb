@@ -13,15 +13,11 @@ class Owner
   end 
   
   def cats 
-    Cat.all.select do |cat| 
-      cat.owner == self 
-    end 
+    Cat.with_owner(self)
   end 
   
   def dogs 
-    Dog.all.select do |dog| 
-      dog.owner == self 
-    end 
+    Dog.with_owner(self)
   end 
   
   def pets
