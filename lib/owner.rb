@@ -50,11 +50,13 @@ class Owner
   end 
   
   def feed_cats 
+    # each_pet(:cats, &:feed)
     @pets[:cats].each {|cat| cat.mood = "happy"}
   end 
   
-  def each_pet(&block)
-    @pets.each_value do |pets_in_category|
+  def each_pet(type = nil, &block)
+    @pets.each do |category, pets_in_category|
+      next unless type.nil? || type == category
       pets_in_category.each(&block)
     end
   end
