@@ -42,12 +42,11 @@ class Owner
   end
   
   def walk_dogs 
-    @pets[:dogs].each  {|dog| dog.mood = "happy"} 
+    dogs.each(&:walk)
   end 
   
   def feed_cats 
-    # each_pet(:cats, &:feed)
-    @pets[:cats].each {|cat| cat.mood = "happy"}
+    cats.each(&:feed)
   end 
   
   def each_pet(type = nil, &block)
@@ -59,17 +58,12 @@ class Owner
   
   
   def sell_pets 
-    # each_pet(&:sell)
-    @pets.each do |type, pets_of_type|
-      pets_of_type.each(&:sell)
-    end
+    pets.each(&:sell)
   end 
   
   
   def list_pets 
-    num_dogs = pets[:dogs].size 
-    num_cats = pets[:cats].size
-    "I have #{num_dogs} dog(s), and #{num_cats} cat(s)."
+    "I have #{dogs.size} dog(s), and #{cats.size} cat(s)."
   end
   
   def self.count 
