@@ -1,16 +1,17 @@
 class Dog
   class << self
-    @all = []
-    attr_reader :all
+    def all
+      @all ||= [] # same as @all = @all || []
+    end
     
     def new(name, owner)
       pet = super(name, owner)
-      @all << pet
+      all << pet
       pet
     end
     
     def with_owner(owner)
-      @all.select { |pet| pet.owner == owner }
+      all.select { |pet| pet.owner == owner }
     end
   end
   
