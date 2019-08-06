@@ -63,8 +63,7 @@ class Owner
   
   def sell_pets 
     pets.each(&:sell)
-  end 
-  
+  end
   
   def list_pets 
     "I have #{dogs.size} dog(s), and #{cats.size} cat(s)."
