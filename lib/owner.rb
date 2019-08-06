@@ -53,7 +53,15 @@ class Owner
     @pets[:cats].each {|cat| cat.mood = "happy"}
   end 
   
+  def each_pet(&block)
+    @pets.each_value do |pets_in_category|
+      pets_in_category.each(&block)
+    end
+  end
+  
+  
   def sell_pets 
+    # each_pet(&:sell)
     @pets.each do |type, pets_of_type|
       pets_of_type.each(&:sell)
     end
