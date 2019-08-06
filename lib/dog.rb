@@ -15,7 +15,7 @@ class Dog
     end
   end
   
-  attr_writer :mood
+  attr_accessor :mood
   attr_reader :name, :owner
   
   def initialize(name, owner)
