@@ -2,13 +2,28 @@ require  'pry'
 require_relative './cat'
 require_relative './dog'
 class Owner
-  @@all = [] 
+  class << self
+    @all = []
+    attr_reader :all
+    
+    def new(name)
+      owner = super(name)
+      @all << owner
+      owner
+    end
+  
+    def count 
+      @all.size 
+    end 
+    
+    def reset_all 
+      @all.clear 
+    end 
+  end
   
   attr_reader :name, :species, :pets
   
   def initialize(name)
-    @species = "human" 
-    @@all << self 
     @name = name
   end 
   
@@ -23,16 +38,9 @@ class Owner
   def pets
     cats + dogs
   end
- 
-  class << self
-    @all 
-  
-  def self.all 
-    @@all 
-  end 
-  
+
   def say_species 
-    "I am a #{@species}."
+    "I am a human."
   end
   
   def buy_dog(name)
@@ -51,14 +59,6 @@ class Owner
     cats.each(&:feed)
   end 
   
-  def each_pet(type = nil, &block)
-    @pets.each do |category, pets_in_category|
-      next unless type.nil? || type == category
-      pets_in_category.each(&block)
-    end
-  end
-  
-  
   def sell_pets 
     pets.each(&:sell)
   end 
@@ -68,13 +68,5 @@ class Owner
     "I have #{dogs.size} dog(s), and #{cats.size} cat(s)."
   end
   
-  def self.count 
-    @@all.size 
-  end 
-  
-  def self.reset_all 
-    @@all.clear 
-  end 
-
 end 
 
