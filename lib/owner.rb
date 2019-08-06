@@ -10,10 +10,6 @@ class Owner
     @species = "human" 
     @@all << self 
     @name = name
-    @pets = {
-      :cats => [], 
-      :dogs => []
-    }
   end 
   
   def cats 
@@ -27,6 +23,10 @@ class Owner
       dog.owner == self 
     end 
   end 
+  
+  def pets
+    cats + dogs
+  end
   
   
   def self.all 
