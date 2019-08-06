@@ -23,7 +23,9 @@ class Owner
   def pets
     cats + dogs
   end
-  
+ 
+  class << self
+    @all 
   
   def self.all 
     @@all 
