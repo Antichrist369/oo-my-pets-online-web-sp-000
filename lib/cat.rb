@@ -12,6 +12,10 @@ class Cat
       @all << pet
       pet
     end
+    
+    def with_owner(owner)
+      @all.select { |pet| pet.owner == owner }
+    end
   end
   
   
