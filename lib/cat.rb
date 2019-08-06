@@ -1,7 +1,5 @@
 class Cat
-  
-  attr_accessor :mood, :owner
-  attr_reader :name
+  attr_reader :name, :mood, :owner
   
   class << self
     @all = []
@@ -17,7 +15,6 @@ class Cat
       @all.select { |pet| pet.owner == owner }
     end
   end
-  
   
   def initialize(name, owner)
     @name = name 
