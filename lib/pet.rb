@@ -1,9 +1,9 @@
-class Cat
+class Pet
   attr_reader :name, :owner
   attr_accessor :mood
   
   class << self
-      def all
+    def all
       @all ||= [] # same as @all = @all || []
     end
     
@@ -27,9 +27,5 @@ class Cat
   def sell
     @mood = 'nervous'
     @owner = nil
-  end
-  
-  def feed 
-    @mood = 'happy'
   end
 end
