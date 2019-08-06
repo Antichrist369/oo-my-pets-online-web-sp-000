@@ -1,5 +1,6 @@
 class Cat
-  attr_reader :name, :mood, :owner
+  attr_reader :name, :owner
+  attr_writer :mood
   
   class << self
       def all
