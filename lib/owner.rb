@@ -3,21 +3,22 @@ require_relative './cat'
 require_relative './dog'
 class Owner
   class << self
-    @all = []
-    attr_reader :all
+    def all
+      @all ||= [] # same as @all = @all || []
+    end
     
     def new(name)
       owner = super(name)
-      @all << owner
+      all << owner
       owner
     end
   
     def count 
-      @all.size 
+      all.size 
     end 
     
     def reset_all 
-      @all.clear 
+      all.clear 
     end 
   end
   
