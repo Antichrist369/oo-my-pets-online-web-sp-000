@@ -7,8 +7,8 @@ class Cat
     @all = []
     attr_reader :all
     
-    def new(*args)
-      pet = super(*args)
+    def new(name, owner)
+      pet = super(name, owner)
       @all << pet
       pet
     end
@@ -18,7 +18,6 @@ class Cat
   def initialize(name, owner)
     @name = name 
     @mood = "nervous"
-    @@all << self
     @owner = owner
   end
   
