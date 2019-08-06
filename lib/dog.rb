@@ -26,7 +26,6 @@ class Dog
   
   def sell
     @mood = 'nervous'
-    @owner.pets[:dogs].delete(self)
     @owner = nil
   end
   
